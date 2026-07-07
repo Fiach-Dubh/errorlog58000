@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <script>
+    (function () {
+      var parts = window.location.pathname.split('/').filter(Boolean);
+      var basePath = '/';
+      if (window.location.hostname.endsWith('github.io') && parts.length) {
+        basePath = '/' + parts[0] + '/';
+      }
+      document.write('<base href="' + basePath.replace(/"/g, '&quot;') + '">');
+    }());
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SatoshiTimeline.com</title>
+  <meta name="description" content="timeline of Satoshi Nakamoto quotes." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="resource-banner" style="position:relative;z-index:20;display:flex;justify-content:center;gap:100px;flex-wrap:wrap;padding:10px 16px;background:rgba(15,17,23,.94);border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem;font-weight:700;"><a href="https://perma.cc/LX6Z-E7K3" target="_blank" rel="noopener" style="color:#ffd08a;text-decoration:none;">Whitepaper</a><a href="https://SatoshiTimes.com/" target="_blank" rel="noopener" style="color:#ffd08a;text-decoration:none;">The Satoshi Times</a><a href="https://web.archive.org/web/20110228054007/http://www.bitcoin.org/Satoshi_Nakamoto.asc" target="_blank" rel="noopener" style="color:#ffd08a;text-decoration:none;">Satoshi PGP Key</a></nav>
+  <a class="skip-link" href="#timelineList">Skip to timeline cards</a>
+  <header class="hero">
+    <div class="hero__grid"></div>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">The Timechain of Satoshi Nakamoto</p>
+        <h1>SatoshiTimeline.com</h1>
+        <p class="lead"><strong>One complete archive of Satoshi Nakamoto history.</strong> <br><br>       A searchable, deep-zoom presentation of 1,096 Satoshi events - writings, emails, forum posts, and source code commits. With forgotten quotes from secret Bitcoin forums and Bitcoin sourceforge. <b>NEW 60+ unknown Satoshi emails with Nicholas Bohm and others have also been discovered and added.</b> <br><br> Now with 22,333 Patoshi blocks!<br><br><small>Note: This site works best on Desktop due to the large data sets (1GB of Memory May Be Required). Events on the timeline are in UTC time.</small></p>
+      </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Timeline controls">
+      <div class="search-wrap">
+        <label for="search">Search quotes</label>
+        <input id="search" type="search" placeholder="Try “proof-of-work”, “privacy”, “Theymos”, “SMF”, “commit”, “wallet.dat”…" autocomplete="off" />
+      </div>
+      <div class="filter-wrap">
+        <span class="filter-title">Sources (click to add-remove dataset cards from the timeline)</span>
+        <div id="filters" class="filters"></div>
+      </div>
+      <div class="range-wrap">
+        <label for="yearRange">drag to see the timechain flow through year <span id="yearLabel"></span></label>
+        <input id="yearRange" type="range" min="2008" max="2014" value="2008" step="1" />
+      </div>
+    </section>
+
+    <section class="timeline-graphic" aria-label="Zoomable timeline graphic">
+      <div class="graphic-topline">
+        <h2>Timechain map</h2>
+        <div class="graphic-actions">
+          <span class="zoom-readout" aria-live="polite">Zoom <b id="zoomLabel">1×</b></span>
+          <button id="zoomOut" type="button" aria-label="Zoom timeline out">−</button>
+          <button id="zoomIn" type="button" aria-label="Zoom timeline in">+</button>
+          <button id="resetView" type="button">Reset view</button>
+          <button id="fullScreenMap" type="button" aria-pressed="false">Full screen</button>
+        </div>
+      </div>
+      <p class="timeline-hint">Ctrl/⌘ + scroll over the map to zoom around the cursor — up to 10000×. Deep zoom switches into day/hour/minute tick marks so quote instances from the same day can spread apart in one view.</p>
+      <div id="axis" class="axis" role="img" aria-label="A zoomable horizontal timeline showing the placement of events from 2008 to 2014."></div>
+      <div class="axis-scroll-controls" aria-label="Timeline scrollbar fine controls">
+        <button id="scrollLeft" class="axis-scroll-button" type="button" aria-label="Nudge timeline left">‹</button>
+        <span>fine scroll</span>
+        <button id="scrollRight" class="axis-scroll-button" type="button" aria-label="Nudge timeline right">›</button>
+      </div>
+    </section>
+
+    <section class="results-head">
+      <div>
+        <h2>Chronological cards</h2>
+        <p id="resultCount">Loading…</p>
+      </div>
+      <div class="sort-note">Click any card to read the full Satoshi text (<b>bold for Satoshi</b>, <i>italics for non-satoshi</i>).</div>
+    </section>
+
+    <ol id="timelineList" class="timeline-list"></ol>
+  </main>
+
+  <dialog id="quoteDialog" class="quote-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <div id="dialogBody"></div>
+  </dialog>
+
+
+  <aside id="supportAd" class="support-ad" aria-label="Support the site" hidden>
+    <button id="supportAdClose" class="support-ad__close" type="button" aria-label="Close support image">×</button>
+    <img src="support-the-site.png" alt="Support The Site QR code" />
+  </aside>
+
+  <footer class="site-footer">
+    <p>© 2026 The Satoshi Times</a>.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  
+  <script data-goatcounter="https://stime.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
